@@ -21,7 +21,7 @@ from JSON string to object and from object to JSON string.
 <li>Support iOS 4.x and above </li>
 </ul>
 <br/>
-<b>The example uses:</b>
+<b>The demo uses:</b>
 <br/>
 <ul>
 <li>Xcode version: 4.5</li>
