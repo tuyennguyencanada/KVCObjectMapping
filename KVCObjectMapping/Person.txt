@@ -1,0 +1,23 @@
+{
+	"FirstName":"John",
+	"LastName":"AppleSeed",
+	"Address":
+		{
+			"Street":"2 Research Dr",
+			"City":"Regina",
+			"State":"SK",
+			"PostalCode":"S4S 0A2"
+		},
+	"Company":"Your company name",
+	"Vehicles":
+	[
+		{"Make":"Toyota", "Model":"Corolla"},
+		{"Make":"GM", "Model":"Oldsmobile"}
+	],
+	"Level": 9,
+    "Awards":
+    [
+        {"Name":"Night Coder", "Description":"Coders who code at night"},
+        {"Name":"Top publisher", "Description":"Coders who publish the most apps"}
+    ]
+}
