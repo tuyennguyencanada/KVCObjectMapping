@@ -66,7 +66,7 @@
     NSData *jsonData = [NSJSONSerialization dataWithJSONObject:[person toDictionary] options:NSJSONReadingMutableContainers error:nil];
     //Convert to NSString to display result
     NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
-
+    
     //Prepare data to display
     _displayText = [NSArray arrayWithObjects:personContent, [[person toDictionary] description], jsonString, nil];
     for (NSString *text in _displayText) {
@@ -76,8 +76,8 @@
     _tblObjectMapping = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 320, 460) style:UITableViewStyleGrouped];
     _tblObjectMapping.dataSource = self;
     _tblObjectMapping.delegate = self;
-    [self.view addSubview:_tblObjectMapping];    
-    if (IS_WIDESCREEN)
+    [self.view addSubview:_tblObjectMapping];
+    if (supportAutoLayout())
     {
         [self.view applyFullExpansionWithSubview:_tblObjectMapping];
     }
@@ -130,7 +130,15 @@
 {
     CGSize maximumLabelSize = CGSizeMake(320,9999);
     CGSize expectedLabelSize = [_displayText[indexPath.section] sizeWithFont:[UIFont boldSystemFontOfSize:16] constrainedToSize:maximumLabelSize];
-    return expectedLabelSize.height;    
+    return expectedLabelSize.height;
+}
+
+BOOL supportAutoLayout()
+{
+    NSString *currSysVer = [UIDevice currentDevice].systemVersion;
+    NSString *requiredVersion = @"6.0";
+    BOOL supportAutoLayout = ([currSysVer compare:requiredVersion options:NSNumericSearch] != NSOrderedAscending)||([currSysVer isEqualToString:requiredVersion]);
+    return supportAutoLayout;
 }
 
 @end
@@ -149,7 +157,7 @@
     _vcRoot.view.backgroundColor = [UIColor grayColor];
     self.window.rootViewController = _vcRoot;
     [self.window makeKeyAndVisible];
-
+    
     return YES;
 }
 @end
