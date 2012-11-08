@@ -69,9 +69,11 @@
 
     //Prepare data to display
     _displayText = [NSArray arrayWithObjects:personContent, [[person toDictionary] description], jsonString, nil];
-    
+    for (NSString *text in _displayText) {
+        NSLog(@"%@", text);
+    }
     //Prepare table
-    _tblObjectMapping = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 320, 416) style:UITableViewStyleGrouped];
+    _tblObjectMapping = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 320, 460) style:UITableViewStyleGrouped];
     _tblObjectMapping.dataSource = self;
     _tblObjectMapping.delegate = self;
     [self.view addSubview:_tblObjectMapping];    
